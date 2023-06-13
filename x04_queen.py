@@ -7,8 +7,37 @@ def queen(square):
   return:
   list of possible squares that the queen can move to:
   """
+  available = []
+
+  currentx = square[0]
+  currenty = square[1]
   
-  return None
+  xaxis = ['a','b','c','d','e','f','g','h']
+  yaxis = ['1','2','3','4','5','6','7','8']
+  
+  xnum = xaxis.index(currentx)
+  ynum = yaxis.index(currenty)
+
+  for i in range(0,8):
+    available.append(f"{xaxis[i]}{currenty}")
+    available.append(f"{currentx}{yaxis[i]}")
+
+  for i in range(0,8):
+    x = xaxis[i]
+    differ = abs(xnum - xaxis.index(x))
+
+    if ynum-differ+1 > 0 and ynum-differ+1 <= 8:
+      available.append(f"{x}{ynum-differ+1}")
+      
+    if ynum+differ+1 <= 8 and ynum+differ+1 <= 8:
+      available.append(f"{x}{ynum+differ+1}")
+
+    if str(square) in available:
+      available.remove(str(square))
+  
+  print(available)
+
+  return available
 
 
 def main():

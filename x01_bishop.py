@@ -9,34 +9,35 @@ def bishop(square):
   return:
   list of possible squares that the bishop can move to:
   """
-  print(square)
+
+  #I accidentally got rows and collumns mixed up...
   available = []
 
-  crow = square[0]
-  ccollumn = square[1]
+  currentx = square[0]
+  currenty = square[1]
   
-  row = ['a','b','c','d','e','f','g','h']
-  collumn = ['1','2','3','4','5','6','7','8']
+  xaxis = ['a','b','c','d','e','f','g','h']
+  yaxis = ['1','2','3','4','5','6','7','8']
   
-  rownum = row.index(crow)
-  collumnum = collumn.index(ccollumn)
+  xnum = xaxis.index(currentx)
+  ynum = yaxis.index(currenty)
   
   for i in range(0,8):
-    x = row[i]
-    differ = abs(rownum - row.index(x))
+    x = xaxis[i]
+    differ = abs(xnum - xaxis.index(x))
 
-    if collumnum-differ+1 > 0 and collumnum-differ+1 <= 8:
-      available.append(f"{x}{collumnum-differ+1}")
+    if ynum-differ+1 > 0 and ynum-differ+1 <= 8:
+      available.append(f"{x}{ynum-differ+1}")
       
-    if collumnum+differ+1 <= 8 and collumnum+differ+1 <= 8:
-      available.append(f"{x}{collumnum+differ+1}")
+    if ynum+differ+1 <= 8 and ynum+differ+1 <= 8:
+      available.append(f"{x}{ynum+differ+1}")
 
     if str(square) in available:
       available.remove(str(square))
   
-  print(available)
 
-    
+  print(available)
+  
   return available
 
 
